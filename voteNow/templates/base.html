@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}VoteNow{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div>
+        <h1 id="welcome-text">{% block welcome_text %}Welcome to VoteNow!, click to get started{% endblock %}</h1>
+        <div class="button-container">
+            {% block button %}
+            <button class="button" onclick="window.location.href='{% url 'connect' %}'">Get Started</button>
+            {% endblock %}
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const textElement = document.getElementById('welcome-text');
+            const text = textElement.innerHTML;
+            let index = 0;
+            textElement.innerHTML = '';
+
+            function type() {
+                if (index < text.length) {
+                    textElement.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(type, 100);
+                }
+            }
+            type();
+        });
+    </script>
+</body>
+</html>

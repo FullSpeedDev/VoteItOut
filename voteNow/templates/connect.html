@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoteNow - Connect</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        .qr-code-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background-color: black;
+            transform: scale(1.1); /* Zoom effect */
+        }
+    </style>
+</head>
+<body>
+    <div class="qr-code-container">
+        {% if qr_code_img %}
+            <h2>Session Created: {{ session.title }}</h2>
+            <p>Scan the QR code below to join:</p>
+            <img src="data:image/png;base64,{{ qr_code_img }}" alt="QR Code">
+        {% else %}
+            <h2>Create a New Session</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <label for="title">Session Title:</label>
+                <input type="text" id="title" name="title" required>
+                <button type="submit" class="button">Generate QR Code</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block welcome_text %}
+    Welcome to VoteNow!, click to get started
+{% endblock %}
+
+{% block button %}
+    <button class="button" onclick="window.location.href='{% url 'connect' %}'">Get Started</button>
+{% endblock %}
