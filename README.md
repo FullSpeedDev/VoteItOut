@@ -9,6 +9,7 @@ weather its to decide to have a different time for a meeting or to postpone a qu
 in a classroom, this tool should come in handy.
 
 -------------------------------------------------------------------
+
 if using Windows, in directory of your choosing in terminal type, 
 
 #this will create virtual environment the site will run on
@@ -24,4 +25,5 @@ python3 -m venv venv
 
 source venv/bin/activate
 
-
+--------------------------------------------------------------------------------
+NOTE: you may or may not have to change the zip file name to ovs for it to work...
